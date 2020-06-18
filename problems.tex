@@ -1,0 +1,128 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{cmap}
+\usepackage{cool}
+\usepackage{hyperref}
+\usepackage{graphicx} 
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\usepackage{lastpage}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{braket}
+\usepackage{verbatim}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc,positioning,fit,backgrounds}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}	
+\usepackage[english,russian]{babel}
+\usepackage{geometry} 
+\geometry{top=15mm}
+\geometry{bottom=15mm}
+\geometry{left=15mm}
+\geometry{right=15mm}	
+\usepackage{amssymb}
+\usepackage{icomma} 
+\usepackage{mathtext} 
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0,04mm}
+\usepackage{hyperref}
+\usepackage{mathtext} 
+\setlength\parindent{0pt}
+\usepackage{multicol}
+\lhead{Теория вероятностей и математическая статистика}
+\cfoot{\thepage} 
+\makeatletter % сделать "@" "буквой", а не "спецсимволом" - можно использовать "служебные" команды, содержащие @ в названии
+\renewcommand{\headrulewidth}{0,6mm} 
+
+\renewcommand{\maketitle}{\begin{center}
+		\noindent{\bfseries\scshape\LARGE\@title}\par
+		\noindent {\large\itshape\@author}
+		\vskip 2ex\end{center}}
+\makeatother
+	
+\title{Задачки}
+
+\begin{document}
+	\maketitle
+	
+\section*{Задачка №1}
+
+Я вот в 4 утра узнал, что есть фильм «Ковбои против пришельцев» (2015), так что задача будет по его мотивам (после экзамена по математической статистике посмотрю его даже).
+
+Вообще, задача навеяна олимпиадой МЦНМО по теории вероятности для школьников, сам в ней участвовал, даже выиграл пару задачников.
+
+\subsection*{Условие задачи}
+
+Ковбой Буффало Билл и пришелец Слартибартфаст решили бросить кубик, чтобы узнать, кто из них круче. У кубика $\Factorial{n}$ граней ($n > 2$). 
+
+Правила таковы: кубик им достался нечестный, они не знают истинных вероятностей выпадения граней, но предпологают, что вероятности эквивалентны номеру грани (то есть вероятность выпадения грани 6 в 6 раз больше, чем вероятность выпадения грани 1). В любом случае, они хотят сделать так, чтобы с помощью этого кубика можно было получить с равной вероятностью любое количество очков от 1 до $\Factorial{n}$. Как это можно сделать?
+
+\subsection*{Одно из решений}
+
+Будем подбрасывать кубик $n$ раз до тех пор, пока в комбинации не окажутся все различные числа. Теперь переведем вектор в такой вектор индексов, что он отсортирует изначальный вектор от меньшего к большему, например, для обычного игрального кубика $(4, 2, 6) \rightarrow (1, 0, 2)$. Данные комбинации должны появляться равновероятно (на примере обычного игрального кубика: так как вероятности выпадения комбинаций $(a, b, c), (a, c, b), (b, a, c), (b, c, a), (c, a, b), (c, b, a)$ для любой тройки очков равны, то и для всех троек данные вероятности будут равны). Соотнесем каждой комбинации свое количество очков, и получим равновероятные исходы.
+
+\subsection*{Животные}
+
+Ну, чем-то хорошим нужно было закончить эту страничку, так пусть это будут песели и котики. Да, вышло неровно, но так даже милее.
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.3\linewidth}
+    \includegraphics[width=\linewidth]{dog.jpg}
+    \caption{Песель пытается создать 10000 симуляций, чтобы он мог оценить параметр $\theta$}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{cat.jpg}
+    \caption{Котик наконец-то вывел нормальное распределение из двух словесных предпосылок и устало уснуг}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.25\linewidth}
+    \includegraphics[width=\linewidth]{dogs.jpg}
+    \caption{Песики радостно едут сдавать экзамены офлайн на Покровку}
+  \end{subfigure}
+\end{figure}
+
+\newpage
+
+\section*{Задачка №2}
+
+Эта задачка связана с новым сезоном Смешариков.
+
+\subsection*{Условие задачи}
+
+Ёжик захотел загадать три независимые и одинаково распределенные случайные величины: $X_i \sim Pois(\lambda) \hphantom {1} \forall i \in \{1, 2, 3\}$. У Ёжика специфичные представления о счастье: он счастлив, если будет верно следующее: $X_1^3 + X_2^3 = X_3^3$ при условии $ \abs{X_1 - X_2} = 1$.
+
+Крош очень хочет, чтобы вероятность того, что Ёжик счастлив, была максимальна, ведь он его лучший друг. Крош может подобрать параметр $\lambda$ таким образом, чтобы вероятность счастья Ёжика была максимальна. Только вот Крош без понятия, как это сделать, поэтому он обратился к Лосяшу, который разбирается в науках математических.
+
+Какое значение параметра $\lambda$ максимизирует вероятность счастья Ёжика?
+
+\subsection*{Решение задачи}
+
+Пусть без ограничения общности $X_2 = X_1 + 1$. Тогда будет верно следующее: $X_1^3 + (X_1 + 1)^3 = X_3^3$ (аналогично рассматривается случай $X_1 = X_2 + 1$, так как он симметричен). При $X_1 = 0$ мы получаем $X_3 = 1$. Пусть теперь $X_1 > 0$. Тогда мы получаем частный случай Великой теоремы Ферма: $a^3 + (a + 1)^3 = b^3$, и было доказано, что натуральных решений у данного уравнения не существует (честно хотел как-то доказать сам, но доказательство долгое). Отсюда нам подходят лишь две тройки: $(X_1, X_2, X_3) = (0, 1, 1)$ и  $(X_1, X_2, X_3) = (1, 0,  1)$. Пусть событие A - Ёжик счастлив. Вероятность выпадения этих троек равна $P(A) = 2 \cdot e^{-3\lambda} \cdot \lambda^2$. Запишем следующую задачу:
+
+\begin{equation*}
+\begin{cases}
+p(\lambda) = 2 \cdot e^{-3\lambda} \cdot \lambda^2  \rightarrow \max{} \\
+\lambda > 0
+\end{cases}
+\end{equation*}
+
+Можем записать теперь FOC и SOC:
+\begin{equation*}
+\begin{cases}
+\cfrac{\partial p}{\partial \lambda} = -6 \cdot e^{-3\lambda} \cdot \lambda^2 + 4 \cdot e^{-3\lambda} \cdot \lambda = e^{-3\lambda} \cdot \lambda \cdot (4 - 6 \cdot \lambda) = 0  \\
+\cfrac{\partial^2 p}{\partial \lambda^2} = e^{-3\lambda} \cdot (18\cdot \lambda^2 - 24 \cdot \lambda + 4) < 0 \\
+\lambda > 0
+\end{cases}
+\end{equation*}
+
+Отсюда $\lambda^* = \cfrac{2}{3}$. Вероятность того, что Ёжик будет счастлив, равна $\cfrac{8}{9\cdot e^2} \approx 0.12$.
+
+\end{document}
